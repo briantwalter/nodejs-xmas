@@ -24,14 +24,14 @@ console.log("Listening on port " + http_port);
 
 // logic for light switch
 app.post('/', function(request, response){
- console.log("got POST switch value is: " + request.body.switch);
+ //console.log("DEBUG got POST switch value is: " + request.body.switch);
  // if the button is pressed on the html form do stuff
  if ( request.body.switch = "true" ) {
   // create the new REST client object
   var client = new rest_client();
   // always set mode to GPIO output
   client.post(rest_out, function(request, response) {
-   console.log("DEBUG made REST call on: " + rest_out);
+   //console.log("DEBUG made REST call on: " + rest_out);
   });
   // use a GET to check current on/off state
   client.get(rest_val, function(request, response) {
@@ -56,5 +56,5 @@ app.post('/', function(request, response){
 });
 
 // become daemon
-//require('daemon') ();
+require('daemon') ();
 //console.log("Daemon started with PID: " + process.pid);
