@@ -2,7 +2,7 @@
 // xmas.js
 //
 
-var http_port = 8080;
+var http_port = 8083
 var webcam = "http://motion.lan.walternet.us:8081";
 var mproxy = require('mjpeg-proxy').MjpegProxy;
 var rest_client = require('node-rest-client').Client;
@@ -23,10 +23,10 @@ app.listen(http_port);
 console.log("Listening on port " + http_port);
 
 // logic for light switch
-app.post('/', function(request, response){
+app.post('/lights', function(request, response){
  //console.log("DEBUG got POST switch value is: " + request.body.switch);
  // if the button is pressed on the html form do stuff
- if ( request.body.switch = "true" ) {
+ if ( request.body.switch == "true" ) {
   // create the new REST client object
   var client = new rest_client();
   // always set mode to GPIO output
@@ -52,7 +52,9 @@ app.post('/', function(request, response){
   });
  }
  // redirect back to the main page to see the lights change
- response.redirect(301,	'/');
+ // response.redirect(301,	'/');
+ // send json response although the browser will ignore
+ response.send( "{ switch: "+ request.body.switch + "}");
 });
 
 // become daemon
