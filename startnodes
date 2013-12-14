@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#== simple startup script
+#== with logging
+
+
+BIN=nodejs
+LOG=xmas-nodes.log
+
+echo "Starting Xmas Nodes"
+${BIN} xmas1.js 2>&1 >> ${LOG}
+${BIN} xmas2.js 2>&1 >> ${LOG}
+${BIN} xmas3.js 2>&1 >> ${LOG}
