@@ -2,7 +2,7 @@
 // xmas.js
 //
 
-var http_port = 8081;
+var http_port = 8089;
 var webcam = "http://motion.lan.walternet.us:8081";
 var mproxy = require('mjpeg-proxy').MjpegProxy;
 var rest_client = require('node-rest-client').Client;
@@ -58,5 +58,5 @@ app.post('/lights', function(request, response){
 });
 
 // become daemon
-require('daemon') ();
+//require('daemon') ();
 //console.log("Daemon started with PID: " + process.pid);
